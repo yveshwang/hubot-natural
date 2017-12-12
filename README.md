@@ -1,7 +1,16 @@
 # Hubot Natural
 Steps with node.js direct.
 
+using `node v6.10.3`...
+
 ```
+npm install -g yo generator-hubot
+npm install
+
+# this may not always work, so feel free to do it in addition
+npm install coffee-script@^1.12.6
+npm install js-yaml
+
 # fire up the docker-compose-nohubot.yml file
 docker-compose -f docker-compose-nohubot.yml up
 
