@@ -1,0 +1,150 @@
+# YAML Model for conversational bot
+trust: 0.8
+interactions:
+
+  - name: configure-debug
+    expect:
+      - "!configure debug-mode"
+    answer:
+      - debug-mode changed to $value!
+    context: clear
+    event: configure
+    type: random
+    roleRequired: admin
+
+  - name: location
+    expect:
+      - where
+      - charger
+      - charging
+      - location
+      - located
+      - nearest
+    answer:
+      - The closest location is Circle K Smestad - Viggo Hansteens Vei 1, 0376 Oslo and it's support Tesla charging. 
+      - |
+        1 km furthere there is Circle K Kiellands Plass - Uelands gate 55, 0175 Oslo and charger there are compliant with all market standards
+      - |
+        It there anything else I can help you?
+    event: respond
+    type: block
+
+  - name: locationatstation
+    expect:
+      - cannot
+      - can 
+      - not
+      - find
+      - charger
+      - charging
+      - station
+    answer:
+      - It seems that you are at Circle K Smestad - Viggo Hansteens Vei 1, 0376 Oslo - charging station is located behind the building
+      - |
+        Feel free to ask our employees for any assistance.
+      - |
+        It there anything else I can help you?
+    event: respond
+    type: block
+
+  - name: ric
+    expect:
+      - ric
+      - roll
+    answer:
+      - this is important in your life https://www.youtube.com/watch?v=dQw4w9WgXcQ
+    event: respond
+    type: block
+ 
+  - name: howtocharge
+    expect:
+      - how
+      - charge
+      - car
+      - tesla
+    answer:
+      - Charging your car is very simple. As I can see you are at Circle K Smestad  so on this station you can charge all types of electric cars. First of all check how your charging slot looks like and select proper power plug. For your convenience we are attaching table with connectors.
+      - |
+        https://greentransportation.info/ev-charging/range-confidence/chap8-tech/img/iec-fast-charging-all-standards.jpg
+      - |
+        It there anything else I can help you?
+    event: respond
+    type: block
+
+  - name: chargernotworking
+    expect:
+      - charger
+      - not
+      - working
+      - charging
+    answer:
+      - Hmm, let me check.....
+      - |
+        It seems that on Circle K Smestad all chargers are ok - we have one warning from charger number 3 - "Wrong connection". If it's your charger don't worry. Just try to reconnect it again. That would solve the problem.
+      - |
+        It there anything else I can help you?
+    event: respond
+    type: block
+
+  - name: invoiceproblem
+    expect:
+      - invoice
+      - payment
+      - problem
+      - wrong
+      - amount
+      - receipt
+    answer:
+      - In case of payment contact payment@circlekeurope.com. Do not forget to add receipt id and all details that might be helpfull.
+    event: respond
+    type: block
+
+  - name: plugstuck
+    expect:
+      - plug
+      - can
+      - not
+      - remove
+      - take
+    answer:
+      - Don't worry, it happened from time to time. I'm just resetting all ready chargers at Circle K Smestad where I located you.
+      - |
+        If it won't help please contact our station employees.
+      - |
+        It there anything else I can help you?
+    event: respond
+    type: block
+
+  - name: helpyes
+    expect:
+      - yes
+      - Yes
+      - sure
+    answer:
+      - OK, so how can I help you now?
+    event: respond
+    type: block
+
+  - name: helpno
+    expect:
+      - No
+      - no
+      - Thanks
+      - thanks
+      - thank you
+    answer:
+      - I'm glad that I've help you to solve the ploblem. Let me know if you have any further questions.
+    event: respond
+    type: block
+    
+  - name: greeting-hi
+    expect:
+      - hi
+      - hello
+    answer:
+      - Hi, $user.
+      - Thank you for contacting Circle K EV helpdesk To be more efficient with the help please specify the topic of the help
+      - |
+        Please tell me how can I help you?
+    event: respond
+    type: block

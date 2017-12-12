@@ -1,0 +1,62 @@
+trust: .7
+interactions:
+  - name: test
+    level: context
+    expect:
+      - lorem
+      - ipsum
+    answer:
+      - one does not simply walk to mordor
+    context: clear
+    event: respond
+    type: block
+
+  - name: greeting-hi
+    expect:
+      - "hi"
+    answer:
+      - Hi, $user.
+      - Thank you for contacting Circle K EV helpdesk To be more efficient with the help please specify the topic of the help
+      - |
+        Please select a subject of your interest
+        - Locations of the chargers
+        - Charging process
+        - Invoices
+        - Other
+    next:
+      interaction: test
+      trust: .5
+    event: respond
+    type: block
+
+  - name: configure-debug
+    expect:
+      - "configure debug-"
+      - "set debug-"
+      - "var debug-"
+    answer:
+      - $key changed to $value!
+      - Got it! Now $key is $value
+      - $key = $value -> https://media.giphy.com/media/12NUbkX6p4xOO4/giphy.gif
+    event: configure
+    type: random
+    action: setVariable
+    role: admin
+
+  - name: configure-retrain
+    expect:
+      - "retrain bot"
+      - "reload training"
+      - "restart bot"
+      - "train again"
+    answer:
+      - Right >>> Training reloaded
+      - You got it $user. Let's start again.
+      - Ok, just a moment... Fine we can start it over.
+      - Got it! Restarting engines... I'm finished training
+      - Training harder!
+      - Alright! No pain, no gain!
+    event: configure
+    type: random
+    action: train
+    role: admin

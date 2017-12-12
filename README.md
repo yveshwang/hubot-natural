@@ -1,4 +1,26 @@
 # Hubot Natural
+Steps with node.js direct.
+
+```
+# fire up the docker-compose-nohubot.yml file
+docker-compose -f docker-compose-nohubot.yml up
+
+# goto localhost:3000 and sign up a new user and besure to update the launch.sh with the correct bot's username and password
+
+./launch.sh
+```
+Stes with docker-compose.yml
+```
+# straight up docker-compose
+docker-compose up
+
+# goto localhost:3000 and sign up a new user for the bot. then update the docker-compose.yml file with the creds
+
+docker-compose down && docker-compose up
+```
+
+# Hubot Natural - README from origin
+https://github.com/RocketChat/hubot-natural
 
 ## Natural Language ChatBot
 
@@ -373,3 +395,6 @@ We can not thanks Digital Ocean enough, not only for this beautifull [HeartBot p
 ### Thanks to Our Community
 
 And for last but not least, thanks to our big community of contributors, testers, users, partners, and everybody who loves Rocket.Chat and made all this possible.
+
+### Thanks to up stream
+@diegodorgam https://github.com/RocketChat/hubot-natural
